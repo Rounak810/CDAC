@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+    <style>
+       #sec1{
+        margin-top: 50px;
+        
+       }
+
+       #cus{
+        
+        width: 25%;
+        padding: 10px;
+       }
+
+       form{
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+       }
+
+       #select{
+        width: 25%;
+        padding: 10px;
+        text-align: center;
+        font-size: 20px;
+       }
+
+       #sec2 button{
+        width: 16%;
+        height: 52px;
+       }
+
+       #sec3 p{
+        background-color: black;
+        color: white;
+        width: 25%;
+        padding: 10px;
+       }
+
+       b{
+        color: black;
+       }
+
+       #sec3  h2{
+        color: blue;
+        text-decoration: underline;
+       }
+
+       .high{
+        color: green;
+       }
+       
+    </style>
+</head>
+<body>
+    <p id="cus">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+        Odit quia molestias minima, 
+        ab quos est excepturi illo animi, 
+        architecto quis blanditiis eos itaque dolore dolor qui minus incidunt quibusdam nostrum.
+    </p>
+    <button onclick="custom()" >customize</button>
+
+    <section id="sec1">
+        <form action="#">
+           <label for="">Enter First Name</label> 
+           <input type="text" placeholder="First Name" id="name">
+           <label for="">Enter Last Name</label> <input type="text" placeholder="Last Name" id="lname">
+           <label for="">Enter Mobile No.</label> <input type="number" placeholder="Mobile No." id="ph">
+           <label for="">Enter email</label> <input type="email" placeholder="Email ID" id="email">
+        </form>
+
+        <button onclick="getDetails()">Submit</button>
+        <h2>Your Submitted Information:</h2>
+        <div id="output"></div>
+    </section>
+
+    <section id="sec2">
+        <select name="" id="select">
+            <option value="">Please Remove</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+        </select>
+        <button onclick="removeOption()"> Remove</button>
+    </section>
+
+    <section id="sec3">
+
+        <h2 onmouseover="high()" onmouseout="gone()">[On mouse here bold words of the following paragram will be highlighted ]</h2>
+        <p id="heit">
+            <b>We</b> have just Started this section for the users (<b>beginner</b> to intermididate)
+            whoe <b>want</b> to work with <b>various</b> Javascript <b>problems</b> and write scripts
+            online to test their Javascript <b>skills</b>
+        </p>
+    </section>
+
+    
+    <script>
+         function custom(){
+            var para = document.getElementById('cus');
+            para.style.fontSize='20px';
+            para.style.fontFamily='Georgia, serif';
+            para.style.color='blue'
+         }
+
+         function getDetails(){
+            
+            
+
+            document.getElementById('output').innerHTML=`<p>First Name: ${document.getElementById('name').value}</p>
+           <p>Last Name: ${document.getElementById('lname').value}</p>
+            <p>Phone: ${document.getElementById('ph').value}</p>
+            <p>email: ${document.getElementById('email').value}</p>`;
+         }
+
+         function removeOption(){
+            var c = document.getElementById('select');
+            console.log(c.selectedIndex)
+
+            if(c.selectedIndex != 0){
+                c.remove(c.selectedIndex);
+            }
+            
+         }
+
+         var bw=document.getElementById('heit');
+         function high(){
+            
+            let hw=bw.getElementsByTagName('b');
+
+            for(let word of hw){
+                word.classList.add('high')
+            }
+         }
+
+         function gone(){
+            let hw=bw.getElementsByTagName('b');
+            for(let word of hw){
+                word.classList.remove('high');
+            }
+         }
+    </script>
+</body>
+</html>
